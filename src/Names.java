@@ -26,29 +26,28 @@ public class Names {
 
     public static String oddNames() {
 
-
         String[] namesList = {"Milo", "Nicolette", "Fluffy", "Bessy", "Corneal", "Nightly"};
         System.out.println("namesList: "  + Arrays.toString(namesList) );
 
         String names = Arrays.stream(namesList)
                 .filter(name -> Arrays.asList(namesList).indexOf(name) % 2 != 0)
-                .map(name -> name.trim().split(" ")[0])
+                .map(name -> Arrays.asList(namesList).indexOf(name) + ". " + name.trim().split(" ")[0])
                 .collect(Collectors.joining(", "));
 
         System.out.println("oddNames: "  + names);
-
         return names;
     }
 
     public static void bigSortedNames() {
-        String[] namesList = oddNames().split(", ");
+
+        String[] namesList = {"Milo", "Nicolette", "Fluffy", "Bessy", "Corneal", "Nightly"};
 
         Stream <String> names = (Stream<String>) Arrays.stream(namesList)
                 .map(name -> name.toUpperCase())
                 .sorted(Comparator.reverseOrder());
 
-        System.out.println("bigSortedNames: " );
-        names.forEach(System.out::println);
+        List NM = names.collect(Collectors.toList());
+        System.out.println("bigSortedNames: " + NM);
 
     }
 
