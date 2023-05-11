@@ -29,7 +29,7 @@ class Numbers {
                 .map(Integer::parseInt)
                 .sorted()
                 .map(String::valueOf)
-                .collect(Collectors.toList());
+                .collect(Collectors.joining(", "));
 
 
         System.out.println("sortedNumbers:" + numbers);
